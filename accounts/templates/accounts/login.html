@@ -1,0 +1,59 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/form.css' %}" />
+{% endblock %}
+
+
+{% block headstyles %}
+<style type="text/css">
+    .ar-row--content .container-wide{
+        padding:0;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Log In</legend>
+
+        <p style="color:red">{{ error }}</p>
+
+        <div class="ar-input-set">
+            {{ form.username }}
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+<!--            <span class="ar-floating-label"><i class="fa fa-user-o"></i>&nbsp;Username</span>-->
+            <span class="ar-floating-label">Username</span>
+<!--            <span class="ar-required">*</span>-->
+        </div>
+        <div class="ar-input-set">
+<!--            <label class="ar-form-label" for="password">Password</label><br />-->
+            {{ form.password }}
+            <span class="ar-fixed-label"><i class="fa fa-key"></i></span>
+            <span class="ar-floating-label">Password</span>
+<!--            <span class="ar-required">*</span>-->
+        </div>
+        <span class="ar-form-btn-span">
+            <button class="submit">Log In</button><br />
+            <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Forgotten Password? </a></span><br /><br />
+            <!-- <span>New User? <a class="ar-form-click" href="{% url 'accounts:signup' %}">Click here</a> to register.</span> -->
+        </span>
+
+    </fieldset>
+
+</form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{% static 'accounts/assets/js/form.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,223 @@
+/*  */
+
+form{
+    margin: 2em auto;
+    max-width: 768px;
+    width: 100%;
+}
+
+fieldset{
+    width: 100%;
+    border: 0px;
+    padding: 1em;
+    margin: 1em auto;
+    color: #fff;
+}
+
+legend{
+    width: 100%;
+    font-weight: 200;
+    font-family: Roboto;
+    -webkit-user-select: none;
+    font-size: 2.4rem;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0 0 0.2em;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+legend i{
+    font-weight: 200;
+    font-size: 0.9rem;
+}
+
+.ar-input-set{
+    position: relative;
+    padding: 1.4em 0 1.1em;
+}
+
+input{
+    font-size: 1em;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email']{
+    width: 100%;
+    border:1px solid #dcdcdc;
+    border-radius: 3px;
+    padding: 0.8em;
+    transition: all 0.5s ease;
+    padding-left: 48px;
+    background: transparent;
+    color: #fff;
+}
+
+input:focus{
+    outline: none;
+    border-color: #8e8e8e;
+    box-shadow: 0 0 5px rgba(44, 151, 222, 0.2);
+    box-shadow: 0 0 5px rgba(142, 142, 142, 0.3);
+    transition: all 0.3s ease,color 0.9s ease;
+}
+
+.ar-form-input{
+
+}
+
+.ar-form-btn-span{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 2em auto;
+}
+
+input:invalid ~ .ar-floating-label,
+input:not(:focus):invalid ~ .ar-floating-label{
+
+}
+
+
+
+.ar-floating-label{
+    display: block;
+    position: absolute;
+    top:37px;
+    left: 14px;
+    left: 50px;
+    z-index: 99999999;
+    color: #94aab0;
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(1, 0.05, 0, 1);
+    pointer-events: none;
+}
+
+input:valid ~ .ar-floating-label,
+input:not(:focus):valid ~ .ar-floating-label{
+    font-size: 0.9rem;
+    top:0;
+    left: 0;
+    pointer-events: all;
+}
+
+.ar-fixed-label{
+    color: rgba(132, 132, 132, 0.62);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 0px;
+    padding: 13px 18px;
+    background-color: rgba(216, 211, 211, 0);
+    z-index: 1;
+    pointer-events: none;
+
+}
+
+.ar-form-btn-span button{
+    border:3px solid #efefef;
+    align-content: center;
+    background: #fbfbfb00;
+    color: #fff;
+    font-size: 1.5em;
+    border-radius: 5px;
+    transition: all 0.4s ease, color 0.5s ease;
+    cursor: pointer;
+    margin: 10px 10px 10px 10px;
+    padding: 0.5em 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ar-form-btn-span button:hover{
+    background: #fff;
+    color: #333;
+}
+
+.ar-form-btn-span button:focus,
+.ar-form-btn-span button:hover{
+    outline: 0;
+}
+
+.ar-form-btn-span button:active{
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+.ar-form-btn-span span,
+.ar-form-click{
+    letter-spacing: 0.05em;
+    color: #fff;
+    font-weight: lighter;
+}
+
+.ar-form-click:hover{
+    text-decoration: underline;
+}
+
+.errorlist{
+  color: red;
+}
+
+
+/* o-auth */
+
+.oauth{
+
+}
+
+.oauth-link{
+	/*width: 50%;*/
+	display: inline-block;
+
+ }
+
+.oauth-icon{
+	color:#fff;
+	background-color: #3bb2d0;
+	display: inline-block;
+    padding: 10px;
+	margin: 2px;
+	border-radius: 5px;
+	width: 100%;
+	box-sizing: border-box;
+	/*text-align: left;*/
+}
+
+.oauth-google{
+	background-color: #df4a32;
+}
+.oauth-github{
+	background-color: #444444;
+}
+.oauth-twitter{
+	background-color: #50abf1;
+}
+.oauth-facebook{
+	background-color: #39579a;
+}
+
+.oauth-icon .fa{
+	padding: 2px;
+	float: left;
+}
+
+
+
+/* Wide */

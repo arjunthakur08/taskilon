@@ -1,0 +1,106 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/form.css' %}" />
+{% endblock %}
+
+
+{% block headstyles %}
+<style type="text/css">
+    .ar-row--content .container-wide{
+        padding:0;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Sign Up</legend>
+
+        {% if form.errors %}
+            <p style="color: red; margin:15px 0;">
+                Please correct the error{{ form.errors|pluralize }} below.
+            </p>
+        {% endif %}
+
+        <div class="ar-input-set">
+            {{form.first_name}}
+            <!---<input class="ar-form-input" id="fname" type="text" required />-->
+            <span class="ar-fixed-label"><i class="fa fa-user"></i></span>
+            <span class="ar-floating-label">First Name</span>
+            {{ form.first_name.errors }}
+        </div>
+
+        <div class="ar-input-set">
+            {{form.last_name}}
+            <!--<input class="ar-form-input" id="lname" type="text" required />-->
+            <span class="ar-fixed-label"><i class="fa fa-user"></i></span>
+            <span class="ar-floating-label">Last Name</span>
+            {{ form.last_name.errors }}
+        </div>
+        <div class="ar-input-set">
+          {{form.email}}
+            <!--<input class="ar-form-input" id="email" type="text" required />-->
+            <span class="ar-fixed-label"><i class="fa fa-envelope-o"></i></span>
+            <span class="ar-floating-label">E-Mail ID</span>
+            {{ form.email.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{form.username}}
+            <!-- <input class="ar-form-input" id="username" type="text" required /> -->
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+            <span class="ar-floating-label">Choose a Username</span>
+            {{ form.username.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{form.password1}}
+            <!-- <input class="ar-form-input" id="password" type="password" required /> -->
+            <span class="ar-fixed-label"><i class="fa fa-key"></i></span>
+            <span class="ar-floating-label">Choose a Password</span>
+            {{ form.password1.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{form.password2}}
+            <span class="ar-fixed-label"><i class="fa fa-key"></i></span>
+            <span class="ar-floating-label">Confirm Password</span>
+            {{ form.password2.errors }}
+        </div>
+        <span class="ar-form-btn-span">
+            <button class="button">Sign Up</button><br /><br />
+            <span>Have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Click here</a> to login.</span>
+        </span>
+
+        <div class="oauth">
+          <a class="oauth-link" href="{% url 'social:begin' 'google-oauth2' %}">
+            <span class="oauth-icon oauth-google"><i class="fa fa-google"></i> Sign In with Google</span>
+          </a>
+          <br />
+          <a class="oauth-link" href="{% url 'social:begin' 'github' %}">
+            <span class="oauth-icon oauth-github"><i class="fa fa-github"></i> Sign In with GitHub</span>
+          </a>
+          <br>
+          <a class="oauth-link" href="{% url 'social:begin' 'twitter' %}">
+            <span class="oauth-icon oauth-twitter"><i class="fa fa-twitter"></i> Sign In with Twitter</span>
+          </a>
+          <br />
+          <a class="oauth-link" href="{% url 'social:begin' 'facebook' %}">
+            <span class="oauth-icon oauth-facebook"><i class="fa fa-facebook"></i> Sign In with Facebook</span>
+          </a>
+        </div>
+    </fieldset>
+
+</form>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{% static 'accounts/assets/js/form.js' %}"></script>
+{% endblock %}

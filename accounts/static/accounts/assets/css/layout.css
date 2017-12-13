@@ -1,0 +1,170 @@
+/* Raise My Issue */
+
+body{
+    background: url("img/bg_1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.ar-banner{
+    position: relative;
+/*    min-height: 100%;*/
+    background: linear-gradient(180deg, purple, red);
+    background: #363558;
+    background: #544173;
+    background: #65d29b;
+    background: #0b0925;
+    background: #fbfbfb;
+    background: transparent;
+    color: #ffffff;
+    /*color: rgba(255, 255, 255, 0.82);*/
+    padding: 0 1.5em;
+}
+
+.ar-row{
+    clear:both;
+    overflow: hidden;
+    /*position: relative;*/
+    /*padding:;*/
+}
+
+.ar-row--transparent{
+    color:#ffffff;
+    background-color: transparent;
+}
+
+.ar-row--white{
+    color:#333;
+    background-color: #ffffff;
+}
+
+.ar-row--content{
+    padding:2.185em 0;
+    text-align: justify;
+    font-size: 1em;
+    letter-spacing: 0.8px;
+    transition: all 0.4s ease, color 0.5s ease;
+    transition-delay: 0.7s;
+    opacity: 1;
+}
+
+/*
+
+.row--fixed{position: fixed; z-index: 2;}
+.row--relative{position: relative; z-index: 1;}
+
+*/
+
+.row--padding-medium{
+    padding-top: 2.1875em;
+    padding-bottom: 2.1875em;
+}
+
+/* containers */
+.container-narrow,
+.container-medium,
+.container-wide{
+    margin: 0 auto;
+    padding-left: 1.45em;
+    padding-right: 1.45em;
+}
+
+.container-center{
+    text-align: center;
+}
+
+.container-narrow{
+    max-width: 34em;
+}
+
+.container-medium{
+    max-width: 52em;
+}
+
+.container-wide{
+    max-width: 80em;
+}
+
+
+/* columns */
+
+.col-wide, .col-narrow{
+
+}
+.col-wide{
+
+}
+.col-narrow{
+
+}
+
+.col-wide--two{
+    clear: both;
+    display: inline-block;
+    width:32%;
+}
+
+
+/* wide */
+
+@media(min-width:38em)
+{
+
+    .row--padding-medium
+    {
+        padding-top:3.8889em;
+        padding-bottom:3.8889em;
+        /* 70px/18px */
+    }
+
+    .row--padding-wide
+    {
+        padding-top:5.5556em;
+        padding-bottom:5.5556em;
+        /* 100px/18px */
+    }
+
+    .container-narrow,
+    .container-medium,
+    .container-wide
+    {
+        padding-left: 2em;
+        padding-right: 2em;
+
+    }
+
+    .col-narrow,
+    .col-medium,
+    .col-wide{float:left;}
+    /*.col-narrow--right,
+    .col-wide--right{float:right;}*/
+
+    .col-wide,
+    .col-wide--right{width:61%}
+
+    .col-wide--two{
+        width:35%;
+    }
+
+    .col-medium{width:50%}
+    .col-narrow,
+    .col-narrow--right{width:25%; margin-bottom: 0;}
+    .nav-wide{
+        display: block;
+    }/*
+
+    .nav-mobile{
+        display: none;
+    }*/
+    /*
+    .nav-wide{
+        display: block;
+    }
+    */
+    /*.nav-mobile{
+        display:none;
+    }*/
+
+
+}
