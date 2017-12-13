@@ -121,3 +121,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+Procfile.test
