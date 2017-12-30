@@ -1,8 +1,10 @@
-<!--Raise My accounts-->
+<!--TASKILON-->
+
 <!Doctype HTML>
 <html lang="en">
 <head>
-    <title>Home | Raise My accounts</title>
+    {% block title %}
+    {% endblock %}
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Arjun Thakur" />
@@ -29,31 +31,38 @@
 
     {% endblock %}
 
-
 </head>
 
-<body>
+<body id="wide">
     <div class="ar-banner">
-        <header class="ar-header">
-
-            <nav>
-                <h1 class="ar-brand-title">Taskilon</h1>
-                <ul class="ar-wide-menu">
-<!--                    <li><a href="javascript:void(0);"><i class="fa fa-home"></i></a></li>-->
-                    <li><a href="{% url 'accounts:home' %}">Home <i class="fa fa-home"></i></a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="javascript:void(0);">{{ user.first_name }} <i class="fa fa-chevron-down"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa fa-envelope-o"></i></a></li>
-                    {% else %}
-                        <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
-                    {% endif %}
-<!--                    <li><a href="javascript:void(0);"><i class="fa fa-user-o"></i></a></li>-->
-<!--                    <li><a href="javascript:void(0);"></a></li>-->
-                </ul>
-            </nav>
-        </header>
+        <div class="container-wide">
+            <a href="/" class="ar-brand-title">
+                <img src="{% static 'accounts/assets/css/img/image.png' %}" />
+            </a>
+            <span class="fake-banner">
+            </span>
+            <div id="trigger" class="nav nav-trigger">
+                <a id="nav-trigger-link" class="bars" href="#0">
+                    <span class="bars-top"></span>
+                    <span class="bars-bottom"></span>
+                </a>
+            </div>
+            <div id="nav" class="row nav-bar-container">
+                <nav class="row">
+                    <ul class="ar-wide-menu">
+                        {% if user.is_authenticated %}
+                            <li class="nav-menu"><a href="javascript:void(0);">{{ user.first_name }}<i class="fa fa-chevron-down"></i></a></li>
+                            <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li>
+                            <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-envelope-o"></i></a></li>
+                        {% else %}
+                            <li class="nav-menu"><a href="{% url 'accounts:login' %}">LogIn</a></li>
+                            <li class="nav-menu"><a href="{% url 'accounts:signup' %}">SignUp</a></li>
+                            <li class="nav-menu"><a href="javascript:void(0);">About</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 
     <!--content-->
@@ -68,7 +77,7 @@
     <div class="ar-row ar-row--dark-gray" style="display: none;">
             <footer class="row container-wide">
                 <div class="col-wide">
-                    <h1>Raise My accounts</h1>
+                    <h1>Taskilon</h1>
                     <div class="col-wide--two">
                         <a href="javascript:void(0)">About</a><br />
                         <a href="javascript:void(0)">Contact</a><br />
@@ -80,15 +89,16 @@
                         <a href="javascript:void(0)" target="_blank">Twitter</a><br />
                         <a href="javascript:void(0)" target="_blank">Google+</a><br />
                     </div>
-                    <p>&copy; 2017 <a href="javascript:void(0);" target="_blank">Raise My accounts</a></p>
+                    <p>&copy; 2017 <a href="javascript:void(0);" target="_blank">Taskilon</a></p>
                 </div>
             </footer>
     </div>
 
     <!--Scripts-->
     <script src="https://use.fontawesome.com/45c73aaa68.js"></script>
-    <script type="text/javascript" src="{% static 'accounts/assets/js/' %}">
-    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'accounts/assets/js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'accounts/assets/js/form.js' %}"></script>  
 
     {% block javascripts %}
     {% endblock %}
