@@ -11,7 +11,7 @@ fieldset{
     border: 0px;
     padding: 1em;
     margin: 1em auto;
-    color: #fff;
+    color: #333;
 }
 
 legend{
@@ -52,15 +52,17 @@ input[type='email']{
     padding: 0.8em;
     transition: all 0.5s ease;
     padding-left: 48px;
-    background: transparent;
-    color: #fff;
+    background: #fbfbfb;
+    color: #303030;
 }
 
 input:focus{
     outline: none;
+    background: #ffffff;
     border-color: #8e8e8e;
     box-shadow: 0 0 5px rgba(44, 151, 222, 0.2);
     box-shadow: 0 0 5px rgba(142, 142, 142, 0.3);
+    box-shadow: 0 0 7px 0px rgba(142, 142, 142, 0.3);
     transition: all 0.3s ease,color 0.9s ease;
 }
 
@@ -89,9 +91,9 @@ input:not(:focus):invalid ~ .ar-floating-label{
     left: 14px;
     left: 50px;
     z-index: 99999999;
-    color: #94aab0;
+    color: rgba(36, 41, 46, 0.63);
     font-family: Roboto;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1rem;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -110,7 +112,7 @@ input:not(:focus):valid ~ .ar-floating-label{
 }
 
 .ar-fixed-label{
-    color: rgba(132, 132, 132, 0.62);
+    color: rgba(36, 41, 46, 0.63);
     border-radius: 5px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -126,10 +128,10 @@ input:not(:focus):valid ~ .ar-floating-label{
 }
 
 .ar-form-btn-span button{
-    border:3px solid #efefef;
+    border:3px solid #24292e;
     align-content: center;
-    background: #fbfbfb00;
-    color: #fff;
+    background: #fdfdfd;
+    color: #303030;
     font-size: 1.5em;
     border-radius: 5px;
     transition: all 0.4s ease, color 0.5s ease;
@@ -143,8 +145,8 @@ input:not(:focus):valid ~ .ar-floating-label{
 }
 
 .ar-form-btn-span button:hover{
-    background: #fff;
-    color: #333;
+    background: #24292e;
+    color: #fdfdfd;
 }
 
 .ar-form-btn-span button:focus,
@@ -163,7 +165,7 @@ input:not(:focus):valid ~ .ar-floating-label{
 .ar-form-btn-span span,
 .ar-form-click{
     letter-spacing: 0.05em;
-    color: #fff;
+    color: #24292e;
     font-weight: lighter;
 }
 
@@ -179,13 +181,15 @@ input:not(:focus):valid ~ .ar-floating-label{
 /* o-auth */
 
 .oauth{
-
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .oauth-link{
-	/*width: 50%;*/
+    position: relative;
+	width: 222px;
 	display: inline-block;
-
+    box-sizing: border-box;
  }
 
 .oauth-icon{
@@ -197,7 +201,8 @@ input:not(:focus):valid ~ .ar-floating-label{
 	border-radius: 5px;
 	width: 100%;
 	box-sizing: border-box;
-	/*text-align: left;*/
+    text-align: left;
+    padding-left: 2em;
 }
 
 .oauth-google{
@@ -214,8 +219,13 @@ input:not(:focus):valid ~ .ar-floating-label{
 }
 
 .oauth-icon .fa{
+    position: absolute;
+    top: 0.75em;
+    left: 0.5em;
 	padding: 2px;
-	float: left;
+/*	float: left;*/
+    width: 1.5em;
+    height: 1.3em;
 }
 
 

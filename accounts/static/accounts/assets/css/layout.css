@@ -1,7 +1,8 @@
 /* Raise My Issue */
 
 body{
-    background: url("img/bg_1.jpg");
+/*    background: url("img/bg_1.jpg");*/
+    background: #fdfdfd;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -11,15 +12,11 @@ body{
     position: relative;
 /*    min-height: 100%;*/
     background: linear-gradient(180deg, purple, red);
-    background: #363558;
-    background: #544173;
-    background: #65d29b;
-    background: #0b0925;
-    background: #fbfbfb;
-    background: transparent;
-    color: #ffffff;
+    background: #24292e;
+    color: #333;
     /*color: rgba(255, 255, 255, 0.82);*/
-    padding: 0 1.5em;
+    padding: 0.4em 0em;
+    box-shadow: 0px 0px 20px 0px #24292e;
 }
 
 .ar-row{
@@ -31,6 +28,7 @@ body{
 
 .ar-row--transparent{
     color:#ffffff;
+    color:#333;
     background-color: transparent;
 }
 
@@ -110,6 +108,9 @@ body{
 
 @media(min-width:38em)
 {
+    .ar-banner{
+        padding: 0.4em 1.5em;
+    }
 
     .row--padding-medium
     {
