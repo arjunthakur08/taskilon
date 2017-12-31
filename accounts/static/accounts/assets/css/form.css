@@ -166,7 +166,6 @@ input:not(:focus):valid ~ .ar-floating-label{
 .ar-form-click{
     letter-spacing: 0.05em;
     color: #24292e;
-    font-weight: lighter;
 }
 
 .ar-form-click:hover{
