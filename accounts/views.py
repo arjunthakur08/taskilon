@@ -18,6 +18,9 @@ from django.views.generic.edit import FormView
 def home(request):
     return render(request, 'accounts/home.html', context = { 'user' : request.user })
 
+def about(request):
+    return render(request, 'accounts/about.html', context = { 'user' : request.user })
+
 # LOGIN VIEW
 def login_view(request):
     if(request.user.is_anonymous):
