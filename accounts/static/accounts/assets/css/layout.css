@@ -38,7 +38,7 @@ body{
 
 .ar-row--content{
     padding:2.185em 0;
-    text-align: justify;
+    /* text-align: justify; */
     font-size: 1em;
     letter-spacing: 0.8px;
     transition: all 0.4s ease, color 0.5s ease;
@@ -107,9 +107,9 @@ body{
 
 @media(min-width:38em)
 {
-    .ar-banner{
+    /* .ar-banner{
         padding: 0.4em 1.5em;
-    }
+    } */
 
     .row--padding-medium
     {

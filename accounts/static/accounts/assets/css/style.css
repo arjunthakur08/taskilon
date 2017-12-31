@@ -26,6 +26,51 @@ button{
     padding: 0 0 0 12px;
     height: 100%;
 }
+.heading,
+.heading__small{
+    font-weight: 200;
+    margin-bottom: 0.4em;
+}
+.heading{
+    font-size: 2.5em;
+
+}
+
+.heading__small{
+    font-size: 2em;
+}
+
+.paragraph,
+.paragraph__small{
+    text-indent: 2em;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+    /* letter-spacing: 0.12em; */
+}
+
+.paragraph{
+    font-size: 1.12em;
+}
+
+.paragraph__small{
+    margin-top: 1em;
+    padding: 2em 1em;
+    font-size: 0.85em;
+    background:#f2f2f2;
+    color: #888;
+}
+
+.strong{
+    font-weight: 400;
+}
+
+.superscript{
+    font-size: 0.6em;
+    top: 0;
+    vertical-align: text-bottom;
+}
 
 .fake-banner{
     display: block;

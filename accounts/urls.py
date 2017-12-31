@@ -15,6 +15,7 @@ from . import views
 app_name='accounts'
 urlpatterns = [
 	url(r'^$', views.home, name='home'),
+    url(r'^about/$', views.about, name='about'),
 	url(r'^login/$', views.login_view, name='login'),
 	url(r'^logout/$', views.logout_view, name='logout'),
 	url(r'^signup/$', views.signup, name='signup'),
