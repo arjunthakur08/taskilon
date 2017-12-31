@@ -42,6 +42,7 @@ button{
 
 .paragraph,
 .paragraph__small{
+    text-align: justify;
     text-indent: 2em;
     font-weight: 300;
     line-height: 1.5em;
@@ -70,6 +71,28 @@ button{
     font-size: 0.6em;
     top: 0;
     vertical-align: text-bottom;
+}
+
+.profiles{
+    display: inline-block;
+    width: 100%;
+    padding: 1em;
+    padding-left: 2.4em;
+    position: relative;
+    border:1px solid #999;
+    border-radius: 5px;
+}
+
+.profiles i{
+    position: absolute;
+    top: 23px;
+    left: 1em;
+}
+
+.paragraph li{
+    display: block;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 
 .fake-banner{
@@ -366,6 +389,9 @@ button{
     }
     .fake-banner{
         display: none;
+    }
+    .paragraph li{
+        display: inline-block;
     }
 }
 
