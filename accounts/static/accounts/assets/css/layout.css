@@ -8,12 +8,13 @@ body{
 }
 
 .ar-banner{
-    position: relative;
-/*    min-height: 100%;*/
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
     background: linear-gradient(180deg, purple, red);
     background: #24292e;
     color: #333;
-    /*color: rgba(255, 255, 255, 0.82);*/
     padding: 0.4em 0em;
     box-shadow: 0px 0px 20px 0px #24292e;
 }
@@ -44,6 +45,7 @@ body{
     transition: all 0.4s ease, color 0.5s ease;
     transition-delay: 0.7s;
     opacity: 1;
+    padding-top: 6em;
 }
 
 /*
