@@ -19,6 +19,7 @@ urlpatterns = [
 	url(r'^login/$', views.login_view, name='login'),
 	url(r'^logout/$', views.logout_view, name='logout'),
 	url(r'^signup/$', views.signup, name='signup'),
+    url(r'^ajax/validate_username/$', views.validate_username, name = 'validate_username'),
 	url(r'^profile/$', views.profile, name="profile"),
 	url(r'^change-password/$', views.changePassword, name='changepwd'),
     url(r'^reset_password/$', views.CustomPasswordReset.as_view(), name='password_reset'),

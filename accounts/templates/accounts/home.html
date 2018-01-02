@@ -8,6 +8,7 @@
 {% load static %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/form.css' %}" />
 {% endblock %}
 
 
@@ -17,7 +18,15 @@
 
 
 {% block content %}
-    This is Home of Taskilon
+    <h1 class="heading">You are in the Home of Taskilon</h1>
+    <div style="text-align:center; margin:4em auto; max-width:768px">
+        <a class="heading__small" href="{% url 'accounts:login' %}">Login Now</a>
+        <span class="line-and-text heading__small">
+            <span>OR</span>
+        </span>
+        <a class="heading__small" href="{% url 'accounts:signup' %}">Sign Up Now</a>
+    </div>
+
 {% endblock %}
 
 {% block javascripts %}

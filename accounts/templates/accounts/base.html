@@ -54,6 +54,7 @@
                             <li class="nav-menu"><a href="javascript:void(0);">{{ user.first_name }}<i class="fa fa-chevron-down"></i></a></li>
                             <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li>
                             <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-envelope-o"></i></a></li>
+                            <li class="nav-menu"><a href="{% url 'accounts:logout' %}">Logout</a></li>
                         {% else %}
                             <li class="nav-menu"><a href="{% url 'accounts:login' %}">LogIn</a></li>
                             <li class="nav-menu"><a href="{% url 'accounts:signup' %}">SignUp</a></li>

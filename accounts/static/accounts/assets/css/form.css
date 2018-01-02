@@ -12,6 +12,7 @@ fieldset{
     padding: 1em;
     margin: 1em auto;
     color: #333;
+    text-align: justify;
 }
 
 legend{
@@ -35,6 +36,16 @@ legend i{
 .ar-input-set{
     position: relative;
     padding: 1.4em 0 1.1em;
+}
+
+.two-in-one_1,
+.two-in-one_2{
+    width: 49.4%;
+    float: right;
+    display: inline-block;
+}
+.two-in-one_1{
+    float: left;
 }
 
 input{
@@ -70,11 +81,39 @@ input:focus{
 
 }
 
+.line-and-text{
+    position: relative;
+    display: block;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+}
+
+.line-and-text span{
+    position: relative;
+    display: inline-block;
+    padding: 1rem;
+    z-index: 1000;
+    background:#fff;
+    font-size: 1.5rem;
+}
+
+.line-and-text:before{
+    position: absolute;
+    content:'';
+    top:50%;
+    width: 100%;
+    height: 2px;
+    background: #444444;
+    z-index: 0;
+    left: 0;
+}
+
 .ar-form-btn-span{
     display: block;
     width: 100%;
     text-align: center;
-    margin: 2em auto;
+    margin: 0.5em auto;
 }
 
 input:invalid ~ .ar-floating-label,
@@ -104,7 +143,8 @@ input:not(:focus):invalid ~ .ar-floating-label{
 }
 
 input:valid ~ .ar-floating-label,
-input:not(:focus):valid ~ .ar-floating-label{
+input:not(:focus):valid ~ .ar-floating-label,
+.floating-label>.ar-floating-label{
     font-size: 0.9rem;
     top:0;
     left: 0;
@@ -165,7 +205,11 @@ input:not(:focus):valid ~ .ar-floating-label{
 .ar-form-btn-span span,
 .ar-form-click{
     letter-spacing: 0.05em;
-    color: #24292e;
+    color: #333;
+}
+
+.ar-form-click{
+    color:#8e8e8e;
 }
 
 .ar-form-click:hover{
@@ -186,9 +230,10 @@ input:not(:focus):valid ~ .ar-floating-label{
 
 .oauth-link{
     position: relative;
-	width: 222px;
+	width: 240px;
 	display: inline-block;
     box-sizing: border-box;
+    margin: 0.2em;
  }
 
 .oauth-icon{
