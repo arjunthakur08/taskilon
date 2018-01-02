@@ -5,7 +5,7 @@ from django.forms.fields import EmailField
 from django.core.validators import validate_email
 
 class SignupForm(UserCreationForm):
-    first_name = forms.CharField(required=True)
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'autofocus': 'True'}))
     last_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
     class Meta:

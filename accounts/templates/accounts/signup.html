@@ -24,7 +24,7 @@
 
 {% block content %}
 
-<form method="post">
+<form method="post"  data-validate-username-url = "{% url 'accounts:validate_username' %}">
     {% csrf_token %}
     <fieldset>
         <legend>Sign Up</legend>
@@ -35,22 +35,21 @@
             </p>
         {% endif %}
 
-        <div class="ar-input-set">
+        <div class="ar-input-set two-in-one_1">
             {{form.first_name}}
             <!---<input class="ar-form-input" id="fname" type="text" required />-->
-            <span class="ar-fixed-label"><i class="fa fa-user"></i></span>
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
             <span class="ar-floating-label">First Name</span>
             {{ form.first_name.errors }}
         </div>
-
-        <div class="ar-input-set">
+        <div class="ar-input-set two-in-one_2">
             {{form.last_name}}
             <!--<input class="ar-form-input" id="lname" type="text" required />-->
-            <span class="ar-fixed-label"><i class="fa fa-user"></i></span>
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
             <span class="ar-floating-label">Last Name</span>
             {{ form.last_name.errors }}
         </div>
-        <div class="ar-input-set">
+        <div class="ar-input-set" style="clear:both;">
           {{form.email}}
             <!--<input class="ar-form-input" id="email" type="text" required />-->
             <span class="ar-fixed-label"><i class="fa fa-envelope-o"></i></span>
@@ -78,8 +77,12 @@
             {{ form.password2.errors }}
         </div>
         <span class="ar-form-btn-span">
-            <button class="button">Sign Up</button><br /><br />
-            <span>Have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Click here</a> to login.</span>
+            <button class="button">Sign Up</button><br />
+
+            <span class="line-and-text">
+                <span>OR</span>
+            </span>
+            <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Sign In with Social Profiles</a></span><br /><br />
         </span>
 
         <div class="oauth">
@@ -100,6 +103,7 @@
             </a>
             <br />
         </div>
+        <span style="text-align:center; display:block; padding:1em;">Have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Click here</a> to login.</span><br />
     </fieldset>
 
 </form>
@@ -108,5 +112,43 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{% static 'accounts/assets/js/form.js' %}"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    	<script type="text/javascript">
+    		function ValidateUsername (form, username) {
+    			$.ajax({
+    				url: form.attr('data-validate-username-url'),
+    				data: form.serialize(),
+    				dataType: 'json',
+    				success: function (data) {
+    					if (data.is_taken) {
+    						// alert(data.error_message);
+    						$('#id_username').css('border-color','red');
+    						$('#id_username').css({'border-color':'red', 'box-shadow':'0 0 8px rgba(222, 44, 44, 0.2)'});
+    						$('#register_user').attr('disabled','disabled');
+    						// alert("A user with this username already exists.");
+    					}
+    					else{
+    						$('#id_username').css('border-color','#cfd9db');
+    						// $('#id_username').removeClass('error');
+    						$('#register_user').removeAttr('disabled');
+    						// alert("You can work with this username.");
+    					}
+    				}
+    			}); 
+    			// console.log( $(this).val() )
+    		}
+
+    		$("#id_username").keydown( function() {
+    			var form = $(this).closest("form");
+    			var username = $(this).val();
+    			ValidateUsername(form, username);
+    		});
+    		$("#id_username").keyup( function() {
+    			var form = $(this).closest("form");
+    			var username = $(this).val();
+    			ValidateUsername(form, username);
+    		});
+    	</script>
 {% endblock %}
