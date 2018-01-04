@@ -103,8 +103,8 @@ input:focus{
     content:'';
     top:50%;
     width: 100%;
-    height: 2px;
-    background: #444444;
+    height: 1px;
+    background: #8c8c8c;
     z-index: 0;
     left: 0;
 }

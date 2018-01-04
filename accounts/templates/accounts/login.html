@@ -46,7 +46,10 @@
         </div>
         <span class="ar-form-btn-span">
             <button class="submit">Log In</button><br />
-            <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Forgotten Password? </a></span><br /><br /><br />
+            <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Forgotten Password? </a></span><br />
+            <span class="line-and-text">
+                <span>OR</span>
+            </span>
             <span>New User? <a class="ar-form-click" href="{% url 'accounts:signup' %}">Click here</a> to register.</span>
         </span>
 
