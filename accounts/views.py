@@ -92,25 +92,13 @@ def profile(request):
 	if(request.user.is_anonymous):
 		return redirect(to='accounts:login')
 	else:
-		# if, by mistake or due to some other technical issue , the user's basic details are removed
-		# from the database, then give the user a new basic details' blank page to fill the
-		# information again...
-		# try:
-		# 	user = request.user
-		# 	form = BasicDetailsForm(instance=user)
-		# except BasicDetails.DoesNotExist:
-		# 	user = BasicDetails(user=request.user)
-		# 	form = BasicDetailsForm()
-
 		user = request.user
 		if request.method == 'POST':
-			form = UserChangeForm(request.POST, instance=user)
+			form = UserChangeForm(request.POST, instance=user)   # Display existing user data using "instance=user"
 			if form.is_valid():
 				user.save()
 				form.save()
 				return redirect(to='accounts:profile')
-			# else:
-				# return render(request, 'mis/register.html', {'form':RegistrationForm()})
 		else:
 			form = UserChangeForm(instance=user)
 			return render(request, 'accounts/profile.html', {'form':form})
