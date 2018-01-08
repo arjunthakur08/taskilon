@@ -18,6 +18,8 @@
 
 
 {% block content %}
+
+    {% if user.is_anonymous %}
     <h1 class="heading"> Home of Taskilon</h1>
     <div style="text-align:center; margin:4em auto; max-width:768px">
         <a class="heading__small" href="{% url 'accounts:login' %}">Login Now</a>
@@ -26,6 +28,16 @@
         </span>
         <a class="heading__small" href="{% url 'accounts:signup' %}">Sign Up Now</a>
     </div>
+    {% else %}
+        <!-- <h1 class="heading">Welcome to your Taskilon, {{ user.first_name }}!</h1> -->
+        <!--In Progress (Temporary Code)-->
+        <div class="stayTuned" style="/*display:none;*/">
+            <h1>Development In Progress! <br/ ></h1>
+            <h1><i class="fa fa-gear fa-spin"></i><i style="font-size:0.5em;" class="fa fa-gear icon-spin-counter"></i></h1>
+            <h6>STAY TUNED</h6>
+        </div>
+        <p class="heading__small maintenance"><i class="fa fa-exclamation-circle"></i> This page is currently in maintenance mode and will be updated soon!</p>
+    {% endif %}
 
 {% endblock %}
 

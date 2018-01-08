@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import request, JsonResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm
+from django.contrib.auth.forms import UserChangeForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -88,7 +88,34 @@ def signup(request):
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
 def profile(request):
-    return render(request, 'accounts/profile.html', context = {'user' :request.user})
+    # return render(request, 'accounts/profile.html', context = {'user' :request.user})
+	if(request.user.is_anonymous):
+		return redirect(to='accounts:login')
+	else:
+		# if, by mistake or due to some other technical issue , the user's basic details are removed
+		# from the database, then give the user a new basic details' blank page to fill the
+		# information again...
+		# try:
+		# 	user = request.user
+		# 	form = BasicDetailsForm(instance=user)
+		# except BasicDetails.DoesNotExist:
+		# 	user = BasicDetails(user=request.user)
+		# 	form = BasicDetailsForm()
+
+		user = request.user
+		if request.method == 'POST':
+			form = UserChangeForm(request.POST, instance=user)
+			if form.is_valid():
+				user.save()
+				form.save()
+				return redirect(to='accounts:profile')
+			# else:
+				# return render(request, 'mis/register.html', {'form':RegistrationForm()})
+		else:
+			form = UserChangeForm(instance=user)
+			return render(request, 'accounts/profile.html', {'form':form})
+
+
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
 def changePassword(request):

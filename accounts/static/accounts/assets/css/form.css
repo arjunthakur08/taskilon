@@ -94,7 +94,7 @@ input:focus{
     display: inline-block;
     padding: 1rem;
     z-index: 1000;
-    background:#fff;
+    background:#fdfdfd;
     font-size: 1.5rem;
 }
 

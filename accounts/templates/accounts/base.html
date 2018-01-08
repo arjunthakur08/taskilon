@@ -42,7 +42,7 @@
             <span class="fake-banner">
             </span>
             <div id="trigger" class="nav nav-trigger">
-                <a id="nav-trigger-link" class="bars" href="#0">
+                <a id="nav-trigger-link" class="bars" href="javascript:void(0);">
                     <span class="bars-top"></span>
                     <span class="bars-bottom"></span>
                 </a>
@@ -51,9 +51,8 @@
                 <nav class="row">
                     <ul class="ar-wide-menu">
                         {% if user.is_authenticated %}
-                            <li class="nav-menu"><a href="javascript:void(0);">{{ user.first_name }}<i class="fa fa-chevron-down"></i></a></li>
-                            <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li>
-                            <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-envelope-o"></i></a></li>
+                            <li class="nav-menu"><a href="{% url 'accounts:profile' %}">{{ user.first_name }}&nbsp;<!--<i class="fa fa-chevron-down"></i>--></a></li>
+                            <!-- <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li> -->
                             <li class="nav-menu"><a href="{% url 'accounts:logout' %}">Logout</a></li>
                         {% else %}
                             <li class="nav-menu"><a href="{% url 'accounts:login' %}">LogIn</a></li>
