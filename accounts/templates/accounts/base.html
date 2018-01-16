@@ -10,9 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Arjun Thakur" />
     <meta name="application-name" content="Taskilon" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta charset="utf-8" />
+    <meta name="keywords" content="taskilon, herokuapp, heroku, task management, task, todo app, todo, django, python" />
+    <meta name="description" content="Taskilon is a task management app" />
 
     {% load static %}
 
@@ -38,7 +37,7 @@
     <div class="ar-banner">
         <div class="container-wide">
             <a href="/" class="ar-brand-title">
-                <img src="{% static 'accounts/assets/css/img/image.png' %}" />
+                <img src="{% static 'accounts/assets/css/img/image.png' %}" alt="Taskilon Logo" />
             </a>
             <span class="fake-banner">
             </span>
@@ -97,9 +96,9 @@
 
     <!--Scripts-->
     <script src="https://use.fontawesome.com/45c73aaa68.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="{% static 'accounts/assets/js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'accounts/assets/js/form.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static 'accounts/assets/js/main.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/form.js' %}"></script>
 
     {% block javascripts %}
     {% endblock %}
