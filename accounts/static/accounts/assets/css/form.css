@@ -167,6 +167,7 @@ input:not(:focus):valid ~ .ar-floating-label,
 
 }
 
+.ar-form-btn-span a.submit,
 .ar-form-btn-span button{
     border:3px solid #24292e;
     align-content: center;
@@ -184,16 +185,19 @@ input:not(:focus):valid ~ .ar-floating-label,
     user-select: none;
 }
 
+.ar-form-btn-span a.submit:hover,
 .ar-form-btn-span button:hover{
     background: #24292e;
     color: #fdfdfd;
 }
-
+.ar-form-btn-span a.submit:focus,
+.ar-form-btn-span a.submit:hover,
 .ar-form-btn-span button:focus,
 .ar-form-btn-span button:hover{
     outline: 0;
 }
 
+.ar-form-btn-span a.submit:active,
 .ar-form-btn-span button:active{
     -webkit-transform: scale(0.95);
     -moz-transform: scale(0.95);

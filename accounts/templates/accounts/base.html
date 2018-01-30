@@ -53,6 +53,12 @@
                         {% if user.is_authenticated %}
                             <li class="nav-menu"><a href="{% url 'accounts:profile' %}">{{ user.first_name }}&nbsp;<!--<i class="fa fa-chevron-down"></i>--></a></li>
                             <!-- <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li> -->
+                            {% if user.is_authenticated and backends.associated %}
+                                <!-- <li class="nav-menu"><a href="{% url 'accounts:changepwd' %}">Can't Change Password</a></li> -->
+                            {% elif user.is_authenticated and not backends.associated %}
+                                <li class="nav-menu"><a href="{% url 'accounts:changepwd' %}">Change Password</a></li>
+                            {% else %}
+                            {% endif %}
                             <li class="nav-menu"><a href="{% url 'accounts:logout' %}">Logout</a></li>
                         {% else %}
                             <li class="nav-menu"><a href="{% url 'accounts:login' %}">LogIn</a></li>
