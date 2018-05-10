@@ -51,7 +51,8 @@
                 <nav class="row">
                     <ul class="ar-wide-menu">
                         {% if user.is_authenticated %}
-                            <li class="nav-menu"><a href="{% url 'accounts:profile' %}">{{ user.first_name }}&nbsp;<!--<i class="fa fa-chevron-down"></i>--></a></li>
+                            <li class="nav-menu"><a href="{% url 'accounts:profile' %}">
+                                {% if user.first_name %}{{ user.first_name }}&nbsp;{% else %}(No Name){% endif %}<!--<i class="fa fa-chevron-down"></i>--></a></li>
                             <!-- <li class="nav-menu"><a href="javascript:void(0);"><i class="fa fa-bell-o"></i></a></li> -->
                             {% if user.is_authenticated and backends.associated %}
                                 <!-- <li class="nav-menu"><a href="{% url 'accounts:changepwd' %}">Can't Change Password</a></li> -->

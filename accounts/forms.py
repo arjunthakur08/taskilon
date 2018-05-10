@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms.fields import EmailField
 from django.core.validators import validate_email
 
@@ -41,3 +41,16 @@ class SignupForm(UserCreationForm):
             user.save()
 
         return user
+
+class EditProfileForm(UserChangeForm):
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'autofocus': 'True'}))
+    last_name = forms.CharField(required=True)
+    # email = forms.EmailField(required=True)
+    class Meta:
+        model = User
+        fields = {
+            # 'email',
+            'first_name',
+            'last_name',
+            'password'
+        }

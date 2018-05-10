@@ -7,16 +7,24 @@ from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
-from .forms import SignupForm
 from django.conf import settings
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormView
-
+from .forms import SignupForm, EditProfileForm
+from todolist.models import TodoList
 
 def home(request):
-    return render(request, 'accounts/home.html', context = { 'user' : request.user })
+    if(request.user.is_anonymous):
+        return render(request, 'accounts/home.html')
+    else:
+        if(request.user.is_authenticated):
+            user = request.user
+            todos = TodoList.objects.filter(user=request.user)
+            totalTodos = TodoList.objects.filter(user=request.user).count()
+            return render(request, 'accounts/home.html', context = { 'user' : request.user, 'todos': todos, 'totalTodos': totalTodos })
+    return render(request, 'accounts/home.html')
 
 def about(request):
     return render(request, 'accounts/about.html', context = { 'user' : request.user })
@@ -88,21 +96,20 @@ def signup(request):
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
 def profile(request):
-    # return render(request, 'accounts/profile.html', context = {'user' :request.user})
-	if(request.user.is_anonymous):
-		return redirect(to='accounts:login')
-	else:
-		user = request.user
-		if request.method == 'POST':
-			form = UserChangeForm(request.POST, instance=user)   # Display existing user data using "instance=user"
-			if form.is_valid():
-				user.save()
-				form.save()
-				return redirect(to='accounts:profile')
-		else:
-			form = UserChangeForm(instance=user)
-			return render(request, 'accounts/profile.html', {'form':form})
-
+    user = request.user
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            user.save()
+            form.save()
+            messages.success(request, "Your profile has been edited successfully!", extra_tags='success-alert message')
+            return redirect(to='accounts:profile')
+        messages.error(request, "Your profile edit failed. Check for errors in the form!", extra_tags='error-alert message')
+        return render(request, 'accounts/profile.html', locals())
+    else:
+        form = EditProfileForm(instance=user)
+        return render(request, 'accounts/profile.html', {'form': form })
+    return redirect(to='accounts:login')
 
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
@@ -112,7 +119,7 @@ def changePassword(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            messages.success(request, "Your password has been changed successfully!", extra_tags='success-alert')
+            messages.success(request, "Your password has been changed successfully!", extra_tags='success-alert message')
             return redirect(to='accounts:changepwd')
         return render(request, 'accounts/changePassword.html', locals())
     else:
@@ -132,7 +139,7 @@ def resetPassword(request):
             form = PasswordResetForm(request.POST)
             if form.is_valid():
                 form.save(request=request)
-                messages.info(request, 'We\'ve emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly.If you don\'t receive an email, please make sure you\'ve entered the address you registered with, and check your spam folder.', extra_tags='info-alert')
+                messages.info(request, 'We\'ve emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly.If you don\'t receive an email, please make sure you\'ve entered the address you registered with, and check your spam folder.', extra_tags='info-alert message')
                 return redirect(to='accounts:resetpwd_done')
             return render(request, 'accounts/resetPassword.html', locals())
         else:

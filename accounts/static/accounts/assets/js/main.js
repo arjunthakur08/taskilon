@@ -15,8 +15,21 @@ $(document).ready(function(){
            $('#nav').addClass('nav-open');
        }
     });
+});
 
-
+$(window).on('load', function(){
+    // Messages Self-Destruction
+    (function(){
+        setTimeout(function(){
+            $('.success').fadeOut(1000, function(){
+                $('.success').remove();
+            });
+        }, 5000);
+    })();
+    if($('.message').hasClass('error'))
+    {
+        $('#myModal').css('display','block');
+    }
 });
 
 function menuWideOrMobile(event){

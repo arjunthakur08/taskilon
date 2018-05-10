@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 
 {% block title %}
-    <title>{{ user.get_full_name }} | Taskilon</title>
+    <title>{% if user.get_full_name %}{{ user.get_full_name }}&nbsp;{% else %}(No Name){% endif %} | Taskilon</title>
 {% endblock %}
 
 {% load static %}
@@ -12,56 +12,165 @@
 
 
 {% block headstyles %}
+    <style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
 {% endblock %}
 
 
 {% block content %}
 
 <!--In Progress (Temporary Code)-->
-<div class="stayTuned" style="/*display:none;*/">
+<!-- <div class="stayTuned" style="/*display:none;*/">
     <h1>Development In Progress! <br/ ></h1>
     <h1><i class="fa fa-gear fa-spin"></i><i style="font-size:0.5em;" class="fa fa-gear icon-spin-counter"></i></h1>
     <h6>STAY TUNED</h6>
 </div>
-<p class="heading__small maintenance"><i class="fa fa-exclamation-circle"></i> This page is currently in maintenance mode and will be updated soon!</p>
+<p class="heading__small maintenance"><i class="fa fa-exclamation-circle"></i> This page is currently in maintenance mode and will be updated soon!</p> -->
 
-<p class="heading__small">
+<!-- <p class="heading__small">
 
 
-    <!-- {{user.get_full_name}}<br />
+    {{user.get_full_name}}<br />
     {% if user.is_authenticated and backends.associated %}
         Social auth user @{{user.username}}
     {% elif user.is_authenticated and not backends.associated %}
         Not a social auth user @{{user.username}}
         You Can Reset Password
     {% else %}
-    {% endif %} -->
-</p>
+    {% endif %}
+</p> -->
 
+{% if messages %}
+    {% for message in messages %}
+    <p {% if message.tags %} class="{{message.tags}}" {% endif %}>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<div class="row row--padding-medium container-wide" style="text-align:left;">
+    <span class="user-img"><i class="fa fa-user-o"></i></span>
+    <div class="user-info">
+        <p class="paragraph">{% if user.get_full_name %}{{ user.get_full_name }}&nbsp;{% else %}(No Name){% endif %}</p> <br />
+        <p class="paragraph">@{{user.get_username}}</p>
+    </div>
+    <div>
+        <span class="ar-form-btn-span">
+            <button id="myBtn" class="submit">Edit</button>
+        </span>
+    </div>
+</div>
+
+<!-- User Tasks Operations-->
+<div class="row row--padding-medium container-wide">
+    {% for todo in user.TodoList %}
+    {{ todo.name }}
+    {% endfor %}
+</div>
 
 <!-- Modal Popup Edit Profile -->
+<div id="myModal" class="modal">
 
-    <!-- <form class="" method="post">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!--Form inside modal-->
+    <form class="" method="post">
         {% csrf_token %}
+        <fieldset>
+            <legend>Edit Profile</legend>
+            {% if form.errors %}
+                <p style="color: red; margin:15px 0;">
+                    Please correct the error{{ form.errors|pluralize }} below.
+                </p>
+            {% endif %}
         <div class="ar-input-set">
             {{ form.first_name }}
             <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
             <span class="ar-floating-label">First Name</span>
+            {{ form.first_name.errors }}
         </div>
         <div class="ar-input-set">
             {{ form.last_name }}
             <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
             <span class="ar-floating-label">Last Name</span>
+            {{ form.last_name.errors }}
         </div>
-        <div class="ar-input-set">
+        <!-- <div class="ar-input-set">
             {{ form.email }}
             <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
             <span class="ar-floating-label">E-mail Address</span>
-        </div>
-    </form> -->
+            {{ form.email.errors }}
+        </div> -->
+        <span class="ar-form-btn-span">
+            <button type="submit" class="submit">Save</button>
+        </span>
+    </fieldset>
+    </form>
+  </div>
+
+</div>
+
 
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
     <script src="{% static 'accounts/assets/js/form.js' %}"></script>
 {% endblock %}

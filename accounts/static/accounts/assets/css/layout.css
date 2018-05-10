@@ -12,6 +12,7 @@ body{
     top:0;
     left: 0;
     width: 100%;
+    height: 10.5%;
     z-index: 9999;
     background: linear-gradient(180deg, purple, red);
     background: #24292e;
@@ -83,7 +84,7 @@ body{
 }
 
 .container-wide{
-    max-width: 80em;
+    max-width: 70em;
 }
 
 

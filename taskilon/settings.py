@@ -33,6 +33,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 INSTALLED_APPS = [
 	'accounts.apps.AccountsConfig',
+    'todolist.apps.TodolistConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +133,8 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
 
+# Force HTTPS in the final URIs http://python-social-auth-docs.readthedocs.io/en/latest/configuration/settings.html?highlight=SOCIAL_AUTH_REDIRECT_IS_HTTPS%20#processing-redirects-and-urlopen
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 WSGI_APPLICATION = 'taskilon.wsgi.application'
 
