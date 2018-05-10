@@ -15,7 +15,9 @@ myvenv
 # Migrations
 **/migrations/*
 !**/migrations/__init__.py
+!todolist/migrations/*
 staticfiles
+
 
 .DS_Store
 bin/
