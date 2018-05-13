@@ -23,7 +23,7 @@
 
 {% block content %}
 
-<form method="post">
+<form method="post" style="max-width:640px;">
     {% csrf_token %}
     <fieldset>
         <legend>Log In</legend>
@@ -47,11 +47,23 @@
         <span class="ar-form-btn-span">
             <button class="submit">Log In</button><br />
             <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Forgotten Password? </a></span><br />
+            <!-- <br/><span style="color:#555;">or login with</span><br/> -->
             <span class="line-and-text">
                 <span>OR</span>
             </span>
-            <span>New User? <a class="ar-form-click" href="{% url 'accounts:signup' %}">Click here</a> to register.</span>
+            <span style="display: block; color:#555; padding:1em 0;"> Login using Social Profiles</span>
+            <span class="social__login">
+                <a class="social__login-btn oauth-google" href="{% url 'social:begin' 'google-oauth2' %}" title="Google"><i class="fa fa-google"></i></a>
+                <a class="social__login-btn oauth-facebook" href="{% url 'social:begin' 'facebook' %}" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a class="social__login-btn oauth-twitter" href="{% url 'social:begin' 'twitter' %}" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a class="social__login-btn oauth-github" href="{% url 'social:begin' 'github' %}" title="GitHub"><i class="fa fa-github"></i></a>
+            </span>
+
+            <!-- <span class="line-and-text">
+                <span>OR</span>
+            </span>-->
         </span>
+        <div style="text-align:center; padding:4em 0;">Don&apos;t have an account? <a class="ar-form-click" href="{% url 'accounts:signup' %}">Sign Up</a></div>
 
     </fieldset>
 

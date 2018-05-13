@@ -82,10 +82,16 @@
             <span class="line-and-text">
                 <span>OR</span>
             </span>
-            <span><a class="ar-form-click" href="{% url 'accounts:password_reset' %}">Sign In with Social Profiles</a></span><br /><br />
+            <span style="display: block; color:#555; padding:1em 0;"> Sign-Up using Social Profiles</span>
+            <span class="social__login">
+                <a class="social__login-btn oauth-google" href="{% url 'social:begin' 'google-oauth2' %}" title="Google"><i class="fa fa-google"></i></a>
+                <a class="social__login-btn oauth-facebook" href="{% url 'social:begin' 'facebook' %}" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a class="social__login-btn oauth-twitter" href="{% url 'social:begin' 'twitter' %}" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a class="social__login-btn oauth-github" href="{% url 'social:begin' 'github' %}" title="GitHub"><i class="fa fa-github"></i></a>
+            </span>
         </span>
 
-        <div class="oauth">
+        <!-- <div class="oauth">
             <a class="oauth-link" href="{% url 'social:begin' 'google-oauth2' %}">
                 <span class="oauth-icon oauth-google"><i class="fa fa-google"></i> Sign In with Google</span>
             </a>
@@ -102,8 +108,9 @@
                 <span class="oauth-icon oauth-facebook"><i class="fa fa-facebook"></i> Sign In with Facebook</span>
             </a>
             <br />
-        </div>
-        <span style="text-align:center; display:block; padding:1em;">Have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Click here</a> to login.</span><br />
+        </div> -->
+        <div style="text-align:center; padding:4em 0;">Already have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Login</a></div>
+        <!-- <span style="text-align:center; display:block; padding:1em;">Have an account? <a class="ar-form-click" href="{% url 'accounts:login' %}">Click here</a> to login.</span><br /> -->
     </fieldset>
 
 </form>
