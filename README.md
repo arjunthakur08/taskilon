@@ -1,4 +1,4 @@
-# TASKILON - A Django App 
+# TASKILON - A Django App
 
 An utterly fantastic project for newbies using Django 1.11.
 
@@ -6,7 +6,7 @@ An utterly fantastic project for newbies using Django 1.11.
 
 - User creation via both email and socail authentication
 - Ease of task management
-- Responsive Design (Both mobile and desktop compatible) 
+- Responsive Design (Both mobile and desktop compatible)
 
 ## How to Use
 
@@ -24,4 +24,6 @@ pip install -r requirements/local.txt
 ### Note : Rename the ***.env.example*** file to ***.env***
 
 
-## License: MIT
+## License
+
+MIT © [Arjun Thakur](https://github.com/arjun0108)
