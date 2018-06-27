@@ -81,23 +81,16 @@
     </div>
 
      <!--footer-->
-    <div class="ar-row ar-row--dark-gray" style="display: none;">
+    <div class="ar-row ar-row--dark-gray ar-footer" style="">
             <footer class="row container-wide">
-                <div class="col-wide">
-                    <h1>Taskilon</h1>
-                    <div class="col-wide--two">
-                        <a href="javascript:void(0)">About</a><br />
-                        <a href="javascript:void(0)">Contact</a><br />
-                        <a href="javascript:void(0)">FAQ</a><br />
+                <!-- <div class="col-wide"> -->
+                    <h1 class="row footer__heading">Quick Links</h1>
+                    <div class="row footer__links">
+                        <a href="{% url 'accounts:about' %}">About</a>
+                        <a href="mailto:arjunthakur01081997@gmail.com">Contact</a>
                     </div>
-
-                    <div class="col-wide--two">
-                        <a href="javascript:void(0)" target="_blank" rel='noopener'>Facebook</a><br />
-                        <a href="javascript:void(0)" target="_blank" rel='noopener'>Twitter</a><br />
-                        <a href="javascript:void(0)" target="_blank" rel='noopener'>Google+</a><br />
-                    </div>
-                    <p>&copy; 2017 <a href="javascript:void(0);" target="_blank" rel='noopener'>Taskilon</a></p>
-                </div>
+                <!-- </div> -->
+                <p class="footer__copyright">&copy; <span id="copyright__year"></span> <a href="javascript:void(0);" target="_blank" rel='noopener'>TASKILON</a> | <a href="https://github.com/arjun0108" target="_blank" rel="nofollow"><span class="strong">Arjun Thakur</span></a></p>
             </footer>
     </div>
 
@@ -106,7 +99,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{% static 'accounts/assets/js/main.js' %}"></script>
     <script src="{% static 'accounts/assets/js/form.js' %}"></script>
-
+    <script>
+        var today = new Date();
+        var year = today.getFullYear();
+        document.getElementById("copyright__year").innerHTML = year;
+    </script>
     {% block javascripts %}
     {% endblock %}
 

@@ -65,6 +65,7 @@ button{
 
 .strong{
     font-weight: 400;
+    border-bottom: 1px solid;
 }
 
 .superscript{
@@ -157,6 +158,8 @@ button{
     transition: all 0.3s ease, color 0.3s ease;
     padding: 0.6em 0.8em;
     border-radius: 5px;
+    letter-spacing: 0.15em;
+    word-spacing: 0.2em;
 }
 
 .ar-wide-menu a:hover{
@@ -409,7 +412,7 @@ button{
     left: 0;
     width: 100%;
     padding: 0.5em 1em;
-    background: #24292e;
+    background: #111;
     margin-bottom: 0;
 }
 
@@ -425,7 +428,7 @@ button{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #24292e;
+    color: #111;
 }
 h1{font-size:3em;}
 h6{font-size:1.2em;}
@@ -462,7 +465,7 @@ h6{font-size:1.2em;}
 
 @media(min-width:720px)
 {
-    h1{top:35%;font-size:5em;
+    h1{top:35%; font-size: 5em;
     }
     h6{font-size:2em;}
 }
@@ -476,6 +479,37 @@ h6{font-size:1.2em;}
     animation: spin-counter 2s infinite linear;
 }
 
+/* Footer */
+
+.ar-footer{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background: #24292e;
+    color: #fff;
+    line-height: 1.8em;
+    text-align: left;
+    letter-spacing: 0.15em;
+    word-spacing: 0.2em;
+}
+
+.ar-footer a{
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.52);
+}
+
+.footer__heading{
+    font-size: 1.8em;
+}
+
+.footer__links a{
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em 0;
+}
+
+.footer__copyright{
+    padding: 1em 0;
+}
 
 
 @media(min-width:768px){
@@ -497,6 +531,12 @@ h6{font-size:1.2em;}
     .paragraph li{
         display: inline-block;
     }
+    .ar-footer{
+        text-align: center;
+    }
+    .footer__links a{
+        display: inline-block;
+        margin: 1em 2em;
 }
 
 @media(max-width:425px){
