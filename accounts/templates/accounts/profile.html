@@ -51,6 +51,10 @@
         text-decoration: none;
         cursor: pointer;
     }
+    .ar-row--content .container-wide{
+        padding-left:0;
+        padding-right:0;
+    }
     </style>
 {% endblock %}
 
@@ -91,16 +95,9 @@
     </div>
     <div>
         <span class="ar-form-btn-span">
-            <button id="myBtn" class="submit">Edit</button>
+            <a href="{% url 'accounts:profile_edit' %}" class="submit">Edit</a>
         </span>
     </div>
-</div>
-
-<!-- User Tasks Operations-->
-<div class="row row--padding-medium container-wide">
-    {% for todo in user.TodoList %}
-    {{ todo.name }}
-    {% endfor %}
 </div>
 
 <!-- Modal Popup Edit Profile -->
@@ -110,38 +107,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <!--Form inside modal-->
-    <form class="" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <legend>Edit Profile</legend>
-            {% if form.errors %}
-                <p style="color: red; margin:15px 0;">
-                    Please correct the error{{ form.errors|pluralize }} below.
-                </p>
-            {% endif %}
-        <div class="ar-input-set">
-            {{ form.first_name }}
-            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
-            <span class="ar-floating-label">First Name</span>
-            {{ form.first_name.errors }}
-        </div>
-        <div class="ar-input-set">
-            {{ form.last_name }}
-            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
-            <span class="ar-floating-label">Last Name</span>
-            {{ form.last_name.errors }}
-        </div>
-        <!-- <div class="ar-input-set">
-            {{ form.email }}
-            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
-            <span class="ar-floating-label">E-mail Address</span>
-            {{ form.email.errors }}
-        </div> -->
-        <span class="ar-form-btn-span">
-            <button type="submit" class="submit">Save</button>
-        </span>
-    </fieldset>
-    </form>
+
   </div>
 
 </div>

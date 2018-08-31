@@ -1,0 +1,68 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    <title>New Taskilon | Taskilon</title>
+{% endblock %}
+
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/form.css' %}" />
+{% endblock %}
+
+
+{% block headstyles %}
+<style type="text/css">
+    .ar-row--content .container-wide{
+        padding:0;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<form method="post" style="max-width:640px;">
+    {% csrf_token %}
+    <fieldset>
+        <legend>New Taskilon</legend>
+        {% if form.errors %}
+            <p style="color: red; margin:15px 0;">
+                Please correct the error{{ form.errors|pluralize }} below.
+            </p>
+        {% endif %}
+        <!-- <p style="color:red">{{ error }}</p> -->
+
+        <div class="ar-input-set">
+            {{ form.name }}
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+            <span class="ar-floating-label">Name</span>
+            {{ form.name.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{ form.description }}
+            <span class="ar-fixed-label"><i class="fa fa-key"></i></span>
+            <span class="ar-floating-label">Description</span>
+            {{ form.description.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{ form.expire }}
+            <span class="ar-fixed-label"><i class="fa fa-key"></i></span>
+            <span class="ar-floating-label">End</span>
+            {{ form.expire.errors }}
+        </div>
+        <span class="ar-form-btn-span">
+            <button class="submit">Create</button><br />
+        </span>
+
+
+    </fieldset>
+
+</form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'accounts/assets/js/form.js' %}"></script>
+{% endblock %}

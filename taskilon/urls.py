@@ -18,9 +18,13 @@ from django.contrib import admin
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from accounts import views as taskilon_view
 
 urlpatterns = [
-	url(r'^$', views.home_redirect, name='home'),
+	# url(r'^$', views.home_redirect, name='home'),
+	url(r'^$', taskilon_view.home, name='home'),
+	url(r'^(?P<taskilon_id>[0-9]+)/$', taskilon_view.taskilon_detail, name='taskilon_detail'),
+	url(r'^new/$', views.new_taskilon, name='new_taskilon'),
 	url(r'^accounts/', include('accounts.urls')),
     url(r'^admin/', admin.site.urls),
 	url('', include('social_django.urls', namespace='social')),

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import request, JsonResponse
+from django.http import request, JsonResponse, Http404
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
@@ -14,6 +14,10 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormView
 from .forms import SignupForm, EditProfileForm
 from todolist.models import TodoList
+
+
+def home_redirect(request):
+    return redirect('/')
 
 def home(request):
     if(request.user.is_anonymous):
@@ -39,7 +43,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(to='accounts:profile')
+                return redirect(to='home')
             else:
                 error_message = "Incorrect Username or Password"
                 return render(request, 'accounts/login.html', {'error':error_message,'form':AuthenticationForm()})
@@ -50,7 +54,7 @@ def login_view(request):
         a = request.path
         print(a)
         if(request.path == "/accounts/login/"):
-            return redirect(to='accounts:profile')
+            return redirect(to='home')
         else:
             return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
 
@@ -95,7 +99,34 @@ def signup(request):
 
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
+def taskilon_detail(request, taskilon_id):
+    try:
+        current_todo = TodoList.objects.get(user=request.user,pk=taskilon_id)
+    except TodoList.DoesNotExist:
+        raise Http404("Taskilon does not exist")
+    user = request.user
+    return render(request, 'accounts/taskilon_detail.html', {'todo':current_todo, 'user':user})
+
+
+@login_required(redirect_field_name='next', login_url='accounts:login')
 def profile(request):
+    user = request.user
+    # if request.method == 'POST':
+    #     form = EditProfileForm(request.POST, instance=user)
+    #     if form.is_valid():
+    #         user.save()
+    #         form.save()
+    #         messages.success(request, "Your profile has been edited successfully!", extra_tags='success-alert message')
+    #         return redirect(to='accounts:profile')
+    #     messages.error(request, "Your profile edit failed. Check for errors in the form!", extra_tags='error-alert message')
+    #     return render(request, 'accounts/profile.html', locals())
+    # else:
+    #     form = EditProfileForm(instance=user)
+    return render(request, 'accounts/profile.html')
+    # return redirect(to='accounts:login')
+
+@login_required(redirect_field_name='next', login_url='accounts:login')
+def profile_edit(request):
     user = request.user
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=user)
@@ -105,12 +136,11 @@ def profile(request):
             messages.success(request, "Your profile has been edited successfully!", extra_tags='success-alert message')
             return redirect(to='accounts:profile')
         messages.error(request, "Your profile edit failed. Check for errors in the form!", extra_tags='error-alert message')
-        return render(request, 'accounts/profile.html', locals())
+        return render(request, 'accounts/profile_edit.html', locals())
     else:
         form = EditProfileForm(instance=user)
-        return render(request, 'accounts/profile.html', {'form': form })
+        return render(request, 'accounts/profile_edit.html', {'form': form })
     return redirect(to='accounts:login')
-
 
 @login_required(redirect_field_name='next', login_url='accounts:login')
 def changePassword(request):

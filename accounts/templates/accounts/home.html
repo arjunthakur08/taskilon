@@ -57,7 +57,7 @@
     {% else %}
         <!-- <h1 class="heading">Welcome to your Taskilon, {{ user.first_name }}!</h1> -->
         <!--In Progress (Temporary Code)-->
-        <div class="stayTuned" style="display:block; position:initial;">
+        <div class="stayTuned" style="display:none; position:initial;">
             <h1>Development In Progress! <br/ ></h1>
             <h1><i class="fa fa-gear fa-spin"></i><i style="font-size:0.5em;" class="fa fa-gear icon-spin-counter"></i></h1>
             <h6>STAY TUNED</h6>
@@ -65,13 +65,43 @@
         <p class="heading__small maintenance" style="display:none;"><i class="fa fa-exclamation-circle"></i> This page is currently in maintenance mode and will be updated soon!</p>
 
         <!-- tasks -->
-        <div class="row row--padding-medium container-wide" style="display:none;">
-            <ul>
-                Total Tasks = {{totalTodos}}
-                {% for todo in todos %}
-                    <li>{{forloop.counter}}. {{todo.name}}</li>
-                {% endfor%}
+        <div class="row row--padding-medium" style="display:block; text-align:center; max-width:780px; margin:auto">
+            <h1 class="heading" style="letter-spacing:0.3em; text-align:center;border-bottom: 1px solid #000; display: inline-block;font-weight: 400;">TASKILON</h1>
+            <ul class="taskilon-content">
+
+                {% if todos %}
+                    <!-- Total Tasks = {{totalTodos}} -->
+                    <div class="taskilon-table">
+                        <span class="taskilon-header taskName-width">Task</span>
+                        <span class="taskilon-header taskStatus-width">Status</span>
+                    {% for todo in todos %}
+                        <li>
+                            <a href="{{todo.id}}" class="taskilon-name taskName-width">
+                                <span style="font-weight:800;">{{forloop.counter}}.</span> {{todo.name}}
+                            </a>
+                            <span class="taskilon-status taskStatus-width">
+                                <label class="switch">
+                                    {% if todo.status == False %}
+                                    <input type="checkbox" class="taskilon-status--input" checked>
+                                    {% else %}
+                                    <input type="checkbox" class="taskilon-status--input">
+                                    {% endif %}
+                                    <span class="slider round"></span>
+
+                                </label>
+                            </span>
+                        </li>
+
+                    <!-- <li>{{todo.name}}</li> -->
+                    {% endfor%}
+                    </div>
+                {% else %}
+                    <li class="heading__small" style="color:#242a2e; padding: 1em 0;">No Taskilon Found!</li>
+                {% endif %}
             </ul>
+            <span class="ar-form-btn-span">
+                <a class="submit" href="/new/" style="border:1px solid #24292e;font-weight: 300;"><i class="fa fa-pencil"></i>&nbsp;New Taskilon</a>
+            </span>
         </div>
     {% endif %}
 

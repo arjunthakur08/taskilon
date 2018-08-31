@@ -48,12 +48,13 @@ legend i{
     float: left;
 }
 
-input{
+textarea, input{
     font-size: 1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 
+textarea,
 input[type='text'],
 input[type='password'],
 input[type='email']{
@@ -67,6 +68,7 @@ input[type='email']{
     color: #303030;
 }
 
+textarea:focus,
 input:focus{
     outline: none;
     background: #ffffff;
@@ -143,6 +145,8 @@ input:not(:focus):invalid ~ .ar-floating-label{
     pointer-events: none;
 }
 
+textarea:valid ~ .ar-floating-label,
+textarea:not(:focus):valid ~ .ar-floating-label,
 input:valid ~ .ar-floating-label,
 input:not(:focus):valid ~ .ar-floating-label,
 .floating-label>.ar-floating-label{

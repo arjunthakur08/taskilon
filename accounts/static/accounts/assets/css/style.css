@@ -30,10 +30,11 @@ button{
 .heading__small{
     font-weight: 200;
     margin-bottom: 0.4em;
+    color: #242a2e;
 }
 .heading{
     font-size: 2.5em;
-
+    /* font-weight: 300; */
 }
 
 .heading__small{
@@ -463,6 +464,95 @@ h6{font-size:1.2em;}
 	margin-left: 1em;
 }
 
+/* Taskilon */
+.taskilon-content{
+    text-align: left;
+    padding: 1em;
+    line-height: 1.8em;
+}
+
+.taskilon-header{
+    color: #333;
+    font-weight: 400;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    padding-bottom: 1em;
+}
+.taskilon-name{
+    text-indent: -20px;
+}
+
+.taskName-width{
+    display: inline-block;
+    width:70%;
+    float:left;
+}
+.taskStatus-width{
+    text-align: right;
+    display: inline-block;
+    width:30%;
+    /* float:left; */
+}
+
+/*Task Status*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  transform: translateY(0px);
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 5px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* *****************************-WIDE-***************************** */
 @media(min-width:720px)
 {
     h1{top:35%; font-size: 5em;

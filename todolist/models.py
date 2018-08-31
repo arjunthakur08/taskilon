@@ -18,9 +18,3 @@ class TodoList(models.Model):
     status = models.BooleanField('Task Status', default=False)
     def __str__(self):
         return self.name
-
-# def create_everything(sender, **kwargs):
-#     if kwargs['created']:
-#         user_todo_list = TodoList.objects.create(user=kwargs['instance'])
-#
-# post_save.connect(create_everything, sender=User)

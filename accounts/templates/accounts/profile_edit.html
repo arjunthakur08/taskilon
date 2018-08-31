@@ -1,0 +1,68 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    <title>{% if user.get_full_name %}{{ user.get_full_name }}&nbsp;{% else %}(No Name){% endif %} | Taskilon</title>
+{% endblock %}
+
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/form.css' %}" />
+{% endblock %}
+
+{% block headstyles %}
+<style type="text/css">
+    .ar-row--content .container-wide{
+        padding-left:0;
+        padding-right:0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+    <p {% if message.tags %} class="{{message.tags}}" {% endif %}>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+<div class="row row--padding-medium container-wide" style="text-align:left;">
+    <form class="" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Edit Profile</legend>
+            {% if form.errors %}
+                <p style="color: red; margin:15px 0;">
+                    Please correct the error{{ form.errors|pluralize }} below.
+                </p>
+            {% endif %}
+        <div class="ar-input-set">
+            {{ form.first_name }}
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+            <span class="ar-floating-label">First Name</span>
+            {{ form.first_name.errors }}
+        </div>
+        <div class="ar-input-set">
+            {{ form.last_name }}
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+            <span class="ar-floating-label">Last Name</span>
+            {{ form.last_name.errors }}
+        </div>
+        <!-- <div class="ar-input-set">
+            {{ form.email }}
+            <span class="ar-fixed-label"><i class="fa fa-user-o"></i></span>
+            <span class="ar-floating-label">E-mail Address</span>
+            {{ form.email.errors }}
+        </div> -->
+        <span class="ar-form-btn-span">
+            <button type="submit" class="submit">Save</button>
+        </span>
+    </fieldset>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'accounts/assets/js/form.js' %}"></script>
+{% endblock %}
